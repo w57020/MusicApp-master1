@@ -38,7 +38,7 @@ public class SongDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(track);
         getSupportActionBar().setSubtitle(artist);
 
-        @Override
+        @Overrid
                 public boolean onSupportNavigateUp() {
             onBackPressed();
             return true;
