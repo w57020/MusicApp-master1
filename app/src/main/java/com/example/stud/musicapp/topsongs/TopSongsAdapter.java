@@ -4,6 +4,7 @@ package com.example.stud.musicapp.topsongs;
  * Created by W57020 on 2018-04-26.
  */
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,18 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
         holder.tvArtist.setText(trendingSingle.strArtist);
         holder.tvAlbum.setText(trendingSingle.strAlbum);
 
+        holder.llContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SongDetailsActivity.class);
+                Intent.put
+                view.getContext().startActivity(intent);
+
+            }
+        }){
+
+
+        }
 
     }
 
@@ -69,7 +82,7 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
 
         public TopSongsViewHolder(View itemView) {
             super(itemView);
-
+            llContainers = itemView.FindViewById(R.id.llContainers);
             tvPlace = itemView.findViewById(R.id.tvPlace);
             tvTrack = itemView.findViewById(R.id.tvTrack);
             tvArtist = itemView.findViewById(R.id.tvArtisst);
