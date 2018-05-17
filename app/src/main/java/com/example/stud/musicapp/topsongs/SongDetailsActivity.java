@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.stud.musicapp.R;
 import com.example.stud.musicapp.api.ApiService;
+import com.example.stud.musicapp.api.Track;
 import com.example.stud.musicapp.api.Tracks;
 
 import retrofit2.Call;
@@ -38,31 +43,62 @@ public class SongDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(track);
         getSupportActionBar().setSubtitle(artist);
 
-        @Overrid
-                public boolean onSupportNavigateUp() {
-            onBackPressed();
-            return true;
 
-        }
-
-        ApiService. getService ().getTrack(trackId).enqueue(new Callback<Tracks>() {
+        ApiService.getService().getTrack(trackId).enqueue(new Callback<Tracks>() {
             @Override
             public void onResponse(@NonNull Call<Tracks> call, @NonNull Response<Tracks>
                     response) {
-                Toast. makeText (
-                        SongDetailsActivity. this ,
-                        "Pobrano dane" , Toast. LENGTH_SHORT
-                ).show();
+                Tracks tracks = response.body();
+
+                if (tracks != null && tracks.track.size() > 0) {
+                    showData(tracks.track.get(0));
+                }
+
+
             }
+
+
             @Override
-            public void onFailure( @NonNull Call<Tracks> call, @NonNull Throwable t) {
-                Toast. makeText (
-                        SongDetailsActivity. this ,
+            public void onFailure(@NonNull Call<Tracks> call, @NonNull Throwable t) {
+                Toast.makeText(
+                        SongDetailsActivity.this,
                         "Błąd pobierania danych: " + t.getLocalizedMessage(),
-                        Toast. LENGTH_SHORT
+                        Toast.LENGTH_SHORT
                 ).show();
             }
+
+
         });
 
     }
+
+
+    private void showData(Track track) {
+        TextView tvAlbum = findViewById(R.id.tvAlbum);
+        TextView tvGenre = findViewById(R.id.tvGenre);
+        TextView tvStyle = findViewById(R.id.tvStyle);
+        TextView tvDescription = findViewById(R.id.tvDescription);
+
+        tvAlbum.setText(track.strAlbum);
+        tvGenre.setText(track.strGenre);
+        tvStyle.setText(track.strStyle);
+        tvDescription.setText(track.strDescriptionEN);
+
+
+        if (track.strTrackThumb != null && !track.strTrackThumb.isEmpty()) {
+            ImageView ivThumb = findViewById(R.id.ivThumb);
+            Glide.with(this).load(track.strTrackThumb).into(ivThumb);
+        }
+
+
+    }
+
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+
+    }
+}
 }
