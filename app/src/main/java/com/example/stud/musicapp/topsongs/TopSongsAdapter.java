@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.stud.musicapp.R;
 import com.example.stud.musicapp.api.TrandingSingle;
 import com.example.stud.musicapp.api.TrendingList;
 
