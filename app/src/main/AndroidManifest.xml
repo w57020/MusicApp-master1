@@ -24,7 +24,9 @@
         <activity
             android:name=".favorites.FavoritesActivity"
             android:label="Ulubione" />
-
+        <activity android:name=".searchalbum.SearchAlbumActivity"
+        android:label="@string/searchalbum"
+        />
     </application>
 
 </manifest>
