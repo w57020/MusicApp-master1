@@ -20,7 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".topsongs.TopSongsActivity" />
-        <activity android:name=".topsongs.SongDetailsActivity"></activity>
+        <activity android:name=".topsongs.SongDetailsActivity" />
+        <activity
+            android:name=".favorites.FavoritesActivity"
+            android:label="Ulubione" />
+
     </application>
 
 </manifest>
