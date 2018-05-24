@@ -29,12 +29,13 @@ SharedPreferences sharedPreferences;
 
         sharedPreferences = getPreferences(MODE_PRIVATE);
 
+        String artist = sharedPreferences.getString("query",null);
+        etQuery.setText(artist);
 
         etQuery = findViewById(R.id.etQuery);
                 rvList = findViewById(R.id.rvList);
 
-        String artist = sharedPreferences.getString("query",null);
-        etQuery.setText(artist);
+
 
         Button bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
