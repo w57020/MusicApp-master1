@@ -7,4 +7,8 @@
     <string name="favorites">Ulubione</string>
     <string name="searchalbum">Znajdź album</string>
     <string name="Szukaj">Szukaj</string>
+    <string name="sort_by_name">Sorrtuj_wg_nazwy</string>
+    <string name="sort_by_year">Sortuj_wg_roku</string>
+    <string name="sort_by_sale">Sortuj_wg_sprzedazy</string>
+    <string name="sort_by_score">Sortuj wg wynikow</string>
 </resources>
